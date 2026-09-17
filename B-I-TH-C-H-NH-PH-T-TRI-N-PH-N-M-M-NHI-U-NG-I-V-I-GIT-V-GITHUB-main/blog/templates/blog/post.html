@@ -1,0 +1,24 @@
+{% extends "page/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p><i>Ngày đăng: {{ post.date|date:"d-m-Y" }}</i></p>
+    <hr>
+    
+    {% if post.image %}
+        <center><img src="{{ post.image.url }}" width="300px" style="object-fit: cover;" /></center>
+        <br/>
+    {% endif %}
+
+    <p>{{ post.description|linebreaks }}</p>
+    <p>{{ post.content|linebreaks }}</p>
+
+    {% if post.audio %}
+        <audio src="{{ post.audio.url }}" controls></audio>
+        <br/><br/>
+    {% endif %}
+
+    <a href="/blog/"><button class="btn btn-secondary">Quay lại</button></a>
+{% endblock %}
